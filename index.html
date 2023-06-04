@@ -1,8 +1,17 @@
+---
+title: First Page
+---
+{% if page.show_sidebar %}
+  <div class="sidebar">
+    sidebar content
+  </div>
+{% endif %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>{{ page.title }}</title>
   </head>
   <body>
     <h1>First sentence - does this work?</h1>
