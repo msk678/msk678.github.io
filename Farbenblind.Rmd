@@ -1,0 +1,93 @@
+---
+title: "R Color Blind Palettes"
+author: "Maria Sckolnick"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    theme: flatly
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_libraries, echo = F, warning = F}
+library(ggplot2)
+```
+
+
+
+```{r plot_palette, echo=F}
+# make palette graph function
+make_palette_graph <- function(palette){
+  p <- palette
+  pal <- data.frame(p)
+  pal$position <-ordered(factor(1:length(p)))
+  pal$p <- factor(p, levels = pal$p[order(pal$position)])
+  plot_palette <- ggplot(pal, mapping = aes(x=position, fill = p))+
+    geom_bar()+
+    scale_fill_manual(values = p)+
+    theme_classic()+
+    theme(axis.text.y = element_blank(),
+          axis.ticks = element_blank())+
+    labs(fill = "Palette values",
+         y = "",
+         x = "Palette position")
+  return(plot_palette)
+}
+```
+## Communication Through Colors
+
+Sometimes a picture is worth a thousand words. To make sure this is true for any figures we create as part of research communication we want to be aware of and accommodate for non-typical vision such as low vision, low contrast vision or color vision deficiency. Individuals with one of these types of vision deficiencies may find it difficult to extract the story and the meaning from a figure or picture if the image does not use accessible color choices. Using symbols or shading texture in addition to color can be one way to help differentiate categories in a graph. Choosing appropriate colors will complement this approach and allow for maximum clarity. 
+
+For individuals without a color vision deficiency it can be hard to imagine what graphics look like to those with color vision deficiency. To bridge this gap, computer tools have been developed that simulate the appearance of images to those with specific types of color vision deficiency. A quick internet search for "Color Blindness Accessibility" or "Color Blindness Simulator" should help identify resources for this purpose. While these tools aid in determining whether a choice of color contrasts is accessible or not, they do not provide a list of choices for color palettes that work well for most individuals with and without color vision deficiency. Those palettes are introduced and described elsewhere. 
+
+During my research I have come across multiple suggestions for color combinations for color blindness accessible graphing. Below, I have compiled them into R-code as palettes, i.e. vectors of color hexadecimal codes. You should be able to copy and paste the lists or vectors directly and use as a palette in your work. 
+
+### Five Colors, Bright Contrasts
+
+```{r palette cb5, fig.dim = c(6,4)}
+
+farbenblind5 <- c("#D55E00","#CC79A7","#0072B2","#F0E442","#009E73")
+make_palette_graph(farbenblind5)
+```
+
+### Large Palette, 15 Colors
+
+```{r palette cb15, fig.dim = c(6,5)}
+
+farbenblind15 <- c("#000000","#004949","#009292","#FF6DB6","#FFB6DB",
+                  "#490092","#006DDB","#B66DFF","#6DB6FF","#B6DBFF",
+                  "#920000","#924900","#DB6D00","#24FF24","#FFFF6D") 
+make_palette_graph(farbenblind15)
+```
+
+### Muted Colors, 10 Colors
+
+```{r palette_cb_muted_10, fig.dim = c(6,4)}
+
+farbenblind_muted_10 <- c("#332288", "#88CCEE", "#44AA99", "#117733","#999933",
+               "#DDCC77","#CC6677", "#882255", "#AA4499", "#DDDDDD")
+make_palette_graph(farbenblind_muted_10)
+```
+
+### Medium Contrast, 7 Colors
+
+```{r palette_cb_med_contr7, fig.dim = c(6,4)}
+farbenblind_med_contr7 <- c("#EECC66", "#EE99AA", "#6699CC", "#997700","#994455",
+                  "#004488", "#000000")
+make_palette_graph(farbenblind_med_contr7)
+```
+
+### Light Contrast, 9 Colors
+
+```{r palette_cb_light_contr9, fig.dim = c(6,4)}
+
+farbenblind_light_contr9 <- c("#77AADD", "#99DDFF", "#44BB99", "#BBCC33","#AAAA00",
+                    "#EEDD88", "#EE8866","#FFAABB", "#DDDDDD")
+make_palette_graph(farbenblind_light_contr9)
+```
+
+
