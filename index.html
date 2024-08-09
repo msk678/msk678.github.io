@@ -1,40 +1,40 @@
----
-title: First Page
----
-{% if page.show_sidebar %}
-  <div class="sidebar">
-    sidebar content
-  </div>
-{% endif %}
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta name="author" content="Maria Sckolnick">
-    <meta charset="utf-8">
-    <title>R Resources
-    </title>
- </head>
+  <meta name="author" content="Maria Sckolnick">
+  <meta charset="utf-8">
+  <title>R Resources</title>
+  <style>
+    body {
+      background-color: #e8ede6
+    }
+    .green-text {
+      color: #003935;
+    }
+  </style>
+</head>
 
- <body>
+<body>
     <!-- make a division for the header-->
     <div id="header">
     </div>
 
     <!-- make a division for the body of type column-->
     <div class="column">
+	<!--h1 stands for heading 1, the largest kind of header.-->
+	<h1 class="green-text">R resources</h1>
 
-      <!--h1 stands for heading 1, the largest kind of header.-->
-      <h1>R graphing resources
-      </h1>
+	<h2>R Resources for graphing</h2>
       
-      <!--p stands for paragraph.-->
-      <p>Here I will be listing some graphing resources to for R:<br>
-          <a href="https://msk678.github.io/Farbenblind.html">Hex codes for color blind friendly palettes</a>
-      </p>
+	<!--p stands for paragraph.-->
+	<p>  
+	  <a href="https://msk678.github.io/Farbenblind.html">
+	  <em>Hex codes for color blind friendly palettes</em>
+	  </a>
+	</p>
       
     </div>
  
- </body>
+</body>
 </html>
